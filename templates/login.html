@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/style_login.css')}}">
+</head>
+<body>
+    <div class="background-gif"></div>
+    <div class="login-page">
+        <div class="login-container">
+            <div class="left-container">
+                <img src="{{url_for('static', filename = 'images/road2.jpg')}}" alt="Login Image">
+            </div>
+            <div class="right-container">
+                <form id="loginForm" class="login-form" action="{{url_for('log_submit')}}" method="post">
+                    <h2>Login</h2>
+                    <div class="input-container">
+                        <input type="text" id="username" name="username" placeholder="username" required>
+                    </div>
+                    <div class="input-container">
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="input-container">
+                        <input type="password" id="password" name="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="submit-button">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+.navbar {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertically align items in the center */
+    padding: 10px;
+    color: #fff;
+    height: 100px;
+}
+
+/* Style the individual navigation items */
+.nav-item {
+    
+    cursor: pointer;
+    height: 40px;
+    width: 100px;
+    border: 2px solid black;
+    text-align: center;
+    line-height: 40px;
+    margin-left: 50%;
+    color: white;
+    text-decoration: none;
+}
+
+/* Style for the ROAD-PULSE element */
+.roadpulse {
+    font-size: xx-large;
+}
+
+/* Align navigation elements to the right of the center */
+.nav-item.home,
+.nav-item.detect,
+.nav-item.notify {
+    margin-left: auto; /* Push the elements to the right */
+}
+
+/* Change styles on hover for other navigation elements */
+.nav-item:not(.roadpulse):hover {
+    background-color: white;
+    color: black;
+}
+
+.coverpage {
+    width: 100%; /* Set the width of the container to 100% */
+    height: 900px; /* Set the height as needed */
+    background-image: url('abt4.jpg'); /* Set the background image */
+    background-size: cover; /* Scale the background image to cover the entire container */
+    background-position: center; /* Center the background image */
+}
+.card1
+{
+    top: 350px;
+}
+.card2
+{
+    top: 350px;
+    left:19rem;
+
+}

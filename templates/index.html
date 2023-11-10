@@ -1,0 +1,342 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>RoadPulse - Paving the path to future</title>
+		
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!-- Add this in the <head> section of your HTML document -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="{{url_for('static', filename = 'css/main.css')}}" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<section id="header">
+				<header>
+					<span class="image avatar"><img src="{{url_for('static', filename = 'images/male_review1.png')}}" alt="" /></span>
+					<h4>Hello {{username}} !!</h4>
+					<h1 id="logo"><a href="#">ROAD-PULSE</a></h1>
+					<p id="pave"> PAVING THE FUTURE</p>
+				</header>
+				<nav id="nav">
+					<ul>
+						<li><a href="#one" class="active">GENERAL INFO AND TUTORIAL</a></li>
+						<li><a href="#two">CAPTURE IMAGE</a></li>
+						<li><a href="#three">LOCATION ACCESS</a></li>
+						<li><a href="#four">CONTACT US</a></li>
+						<li><a href="/detect">DETECT</a></li>
+						<li><a href="/about">ABOUT US</a></li>
+					</ul>
+				</nav>
+				<footer>
+					<ul class="icons">
+						<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+						<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+				</footer>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- One -->
+							<section id="one">
+								<div class="image main" data-position="center">
+									<img src="{{url_for('static', filename= 'images/highway.jpg')}}" alt="" />
+								</div>
+								<div class="container">
+									<header class="major">
+										<h2>ROAD-PULSE</h2>
+										 
+									</header>
+
+									<br>
+										Welcome to ROAD-PULSE
+
+At Pothole Patrol, we're on a mission to make your road journeys smoother and safer. Our innovative pothole detection website is your go-to resource for identifying and reporting road hazards, helping communities, and authorities take action promptly.</br><br>
+
+<strong>Features:</strong><br><br>
+
+<strong>Real-Time Detection</strong>: Our advanced AI algorithms continuously monitor roads for potholes, alerting you to potential hazards in real-time.<br><br>
+
+<strong>Interactive Map</strong>: Explore a user-friendly map that displays pothole locations, severity, and repair progress in your area.<br><br>
+
+<strong>Report Potholes</strong>: Contribute to safer roads by easily reporting potholes you encounter. Upload photos and provide details to speed up the repair process.<br><br>
+
+<strong>Safety First</strong>: Pothole Patrol is committed to road safety. We prioritize the swift resolution of reported issues to prevent accidents and vehicle damage.<br><br>
+
+<strong>Community Collaboration</strong>: Join forces with fellow road users to create a comprehensive database of pothole incidents and keep everyone informed.<br><br>
+
+<strong>Government Partnerships</strong>: We collaborate with local authorities to ensure reported potholes are addressed promptly.<br><br>
+
+<strong><i>Join Us in Paving the Way to Safer Roads</i></strong><br><br>
+
+<strong><i>ROAD-PULSE</i></strong>  is your trusted partner in promoting road safety. Together, we can create smoother, hazard-free journeys for all. Start reporting potholes today, and let's make a difference, one road at a time.
+
+
+									</div>
+
+									<div class="container">
+										<div class="row">
+											<div class="col-md-4">
+												<div class="card">
+													<div class="card-body">
+														<img class="card-img-top" src="{{url_for('static', filename = 'images/roadlogo.jpeg')}}" alt="Card image cap"><br>
+														<h5 class="card-title">Step 1 </h5>
+                                                        <p class="card-text">Click the picture of the pothole </p>
+
+													</div>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="card">
+													<div class="card-body">
+														<img class="card-img-top" src="{{url_for('static', filename = 'images/location.jpeg')}}" alt="Card image cap"><br>
+														<h5 class="card-title">Step 2</h5>
+                                                        <p class="card-text">If the pothole is detected provide your current location </p>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="card">
+													<div class="card-body">
+														<img class="card-img-top" src="{{url_for('static', filename = 'images/userdetails.jpeg')}}" alt="Card image cap"><br>
+														<h5 class="card-title">Step 3</h5>
+                                                        <p class="card-text">Provide the required details </p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									 
+							</section>
+
+						<!-- Two -->
+							<section id="two">
+								<div class="container">
+									 
+    
+   
+
+    <h1 id="capturepothole">Capture a pothole</h1>
+    <video id="camera-view" autoplay playsinline></video>
+    <button id="start-button">Start Camera</button>
+	<button id="close-button" >Close Camera</button>
+    <button id="capture-button">Capture</button>
+    <canvas id="captured-image"></canvas>
+
+
+  
+		 
+
+<script >
+
+
+
+
+const videoElement = document.getElementById('camera-view');
+const startButton = document.getElementById('start-button');
+const closeButton = document.getElementById('close-button');
+const capturedImage = document.getElementById('captured-image');
+const canvas = capturedImage.getContext('2d');
+let cameraStream;
+
+startButton.addEventListener('click', () => {
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then((stream) => {
+                videoElement.srcObject = stream;
+                cameraStream = stream;
+                startButton.style.display = 'none';
+                closeButton.style.display = 'block';
+            })
+            .catch((error) => {
+                console.error('Error accessing the camera:', error);
+            });
+    } else {
+        console.error('getUserMedia is not supported in this browser.');
+    }
+});
+
+closeButton.addEventListener('click', () => {
+    if (cameraStream) {
+        const tracks = cameraStream.getTracks();
+        tracks.forEach((track) => {
+            track.stop();
+        });
+        videoElement.srcObject = null;
+        startButton.style.display = 'block';
+        closeButton.style.display = 'none';
+    }
+});
+    </script>
+ 
+								</div>
+							</section>
+
+						 
+
+							 
+							 
+							   
+							 
+							 
+							<!-- Three -->
+<section id="three">
+    <div class="container">
+        
+        <div id="map" style="height: 400px;"></div> <!-- Added map element -->
+		<button id="getLocationButton">Get My Location</button>
+    </div>
+	
+
+    <script>
+         let map; // Declare the map variable
+
+function initMap() {
+	// Center the map on a default location
+	const defaultLocation = { lat: 37.7749, lng: -122.4194 }; // San Francisco, CA
+
+	map = new google.maps.Map(document.getElementById('map'), {
+		center: defaultLocation,
+		zoom: 15,
+	});
+}
+
+function sendLocationToFlask(latitude, longitude) {
+    // Prepare the data to be sent to Flask
+    const data = { latitude: latitude, longitude: longitude };
+
+    // Make an AJAX request to the Flask backend
+    fetch('/get_location', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('Location sent to Flask successfully');
+            // You can perform actions after successful data transmission here
+        } else {
+            throw new Error('Failed to send location to Flask');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Handle any errors that occur during the transmission
+    });
+}
+
+document.getElementById("getLocationButton").addEventListener("click", function () {
+	getLocation();
+});
+
+function getLocation() {
+	if ("geolocation" in navigator) {
+		navigator.geolocation.getCurrentPosition(function (position) {
+			const latitude = position.coords.latitude;
+			const longitude = position.coords.longitude;
+
+			sendLocationToFlask(latitude, longitude);
+
+			alert("Latitude: " + latitude + "\nLongitude: " + longitude);
+
+			// Center the map on the user's location
+			const userLocation = { lat: latitude, lng: longitude };
+			map.setCenter(userLocation); // Set the map center to the user's location
+
+			// Add a marker for the user's location
+			const userMarker = new google.maps.Marker({
+				position: userLocation,
+				map: map,
+				title: 'Your Location'
+			});
+
+		}, function (error) {
+			// Handle any errors
+			switch (error.code) {
+				case error.PERMISSION_DENIED:
+					alert("User denied the request for Geolocation.");
+					break;
+				case error.POSITION_UNAVAILABLE:
+					alert("Location information is unavailable.");
+					break;
+				case error.TIMEOUT:
+					alert("The request to get user location timed out.");
+					break;
+				case error.UNKNOWN_ERROR:
+					alert("An unknown error occurred.");
+					break;
+			}
+		});
+	} else {
+		alert("Geolocation is not available in this browser.");
+	}
+}
+	</script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9y_3qn7j4J9T-aFRNhnooIoScSs4E5LA&libraries=places&callback=initMap" async defer></script>
+						 
+    
+</section>
+
+
+						
+						
+						  
+
+						<!-- Four -->
+						<br>
+						<br>
+							<section id="four">
+								<div class="container">
+									<h3>Contact Us</h3>
+									 
+									<form method="post" action="#">
+										<div class="row gtr-uniform">
+											<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div>
+											<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" /></div>
+											<div class="col-12"><input type="tel" placeholder="Phone-no"id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"></div>
+											<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="6"></textarea></div>
+											<div class="col-12">
+												<ul class="actions">
+													<li><input type="submit" class="primary" value="Send Message" /></li>
+													<li><input type="reset" value="Reset Form" /></li>
+												</ul>
+											</div>
+										</div>
+									</form>
+								</div>
+							</section>
+					</div>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="container">
+							<ul class="copyright">
+								<li>&copy; RoadPulse. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{{url_for('static', filename = 'js/jquery.min.js')}}"></script>
+			<script src="{{url_for('static', filename = 'js/jquery.scrollex.min.js')}}"></script>
+			<script src="{{url_for('static', filename = 'js/jquery.scrolly.min.js')}}"></script>
+			<script src="{{url_for('static', filename = 'js/browser.min.js')}}"></script>
+			<script src="{{url_for('static', filename = 'js/breakpoints.min.js')}}"></script>
+			<script src="{{url_for('static', filename = 'js/util.js')}}"></script>
+			<script src="{{url_for('static', filename = 'js/main.js')}}"></script>
+
+	</body>
+</html>

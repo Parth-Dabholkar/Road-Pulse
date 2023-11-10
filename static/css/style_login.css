@@ -1,0 +1,86 @@
+/* Resetting default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic styling for the login page */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+    background: url('/static/images/thirdmotion.gif') no-repeat center center fixed; /* Add your background image URL */
+    background-size: cover;
+}
+
+.login-container {
+    display: flex;
+    width: 100%;
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.left-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.right-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+}
+
+.login-form {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+    font-size: 200%;
+    margin-bottom: 20px;
+}
+
+.input-container {
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: olive;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: olivegreen;
+}

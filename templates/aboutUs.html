@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/aboutus.css')}}">
+    <title>Document</title>
+</head>
+
+<body> 
+    <div class="navbar">
+        <div class="roadpulse">
+            ROAD-PULSE
+        </div>
+        <div class="nav-item home">
+            <a href="/home">Home</a>
+        </div>
+        <div class="nav-item detect">
+            <a href="/detect">Detect</a>
+        </div>
+        <div class="nav-item notify">
+            <a href="/updated">Notify</a>
+        </div>
+    </div>
+
+    <div class="coverpage">
+
+        <div class="card1" style="width: 18rem;background-color: black; color: white;">
+            <img class="card-img-top" src="{{url_for('static', filename = 'images/vedant.jpeg')}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Vedant Devkar</h5>
+              <p class="card-text">Front end development,interactivity,user experience,ML model development </p>
+            </div>
+        </div>
+        <div class="card2" style="width: 18rem; background-color: black; color: white;">
+            <img class="card-img-top" src="{{url_for('static', filename = 'images/viraj.jpeg')}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Viraj Dighe</h5>
+              <p class="card-text">Team coordinator </p>
+            </div>
+        </div>
+        <div class="card3" style="width: 18rem; background-color: black; color: white; position: absolute; right: 0;top:100px; ">
+            <img class="card-img-top" src="{{url_for('static', filename = 'images/parth.jpeg')}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Parth Dabholkar</h5>
+              <p class="card-text">Back end development ,ML model integration,mailtrap process. </p>
+            </div>
+        </div>
+        <div class="card3" style="width: 18rem; background-color: black; color: white; position: absolute; right: 0;top:590px; ">
+            <img class="card-img-top" src="{{url_for('static', filename = 'images/ayush.jpeg')}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Ayush Bhanushali</h5>
+              <p class="card-text">Documentation,project report and logbook preparation,project filing. </p>
+            </div>
+        </div>
+
+        
+    </div>
+</body>
+</html>

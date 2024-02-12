@@ -22,33 +22,6 @@ Road-Pulse is a pothole detection website. It allows the public to take photos o
 - Alerting the authorities using Flask-Mail and Mail-Trap
 - Database to store images and cordinates
 
-
-## Run Locally
-
-Clone the project
-
-```bash
-  git clone https://github.com/Parth-Dabholkar/Road-Pulse
-```
-
-Go to the project directory
-
-```bash
-  cd webapp.py
-```
-
-Install dependencies
-
-```bash
-  pip intstall requirements
-```
-
-Start the server
-
-```bash
-  flask run
-```
-
 ## Screenshots
 
 ### Login Page
